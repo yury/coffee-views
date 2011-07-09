@@ -13,8 +13,11 @@ Gem::Specification.new do |s|
   s.rdoc_options      = %w(--charset=UTF-8)
 
   s.files             = `git ls-files`.split("\n")
+  s.require_path      = 'lib'
   
   s.add_runtime_dependency('coffee-script')
-  s.add_runtime_dependency('actionpack')  
+  s.add_runtime_dependency('actionpack')
+  
+  s.add_development_dependency("rspec", ["~> 2.6"])  
 
 end
