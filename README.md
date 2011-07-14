@@ -30,6 +30,8 @@ Usage
     # in create.js.coffee
     $("#item").html <%= render "user/card" %>
     
+Note: There is no need to call `j` or `escape_javascipt` helpers. 
+    
 You can use `coffeeview:` embedded engine in [slim](http://slim-lang.com/) 
 
     h1 Say Hi
