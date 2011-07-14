@@ -29,3 +29,9 @@ Usage
 
     # in create.js.coffee
     $("#item").html <%= render "user/card" %>
+    
+You can use `coffeeview:` embedded engine in [slim](http://slim-lang.com/) 
+
+    h1 Say Hi
+    coffeeview:
+       alert <%= @some_view_string %>       
