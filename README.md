@@ -31,6 +31,11 @@ Usage
     $("#item").html <%= render "user/card" %>
     
 Note: There is no need to call `j` or `escape_javascipt` helpers. 
+
+Coffee Script string interpolation like syntax (`#{=}` for safe and `#{==}` for raw):
+
+    # in update.js.coffee
+    alert "hello #{= @user.name}"
     
 You can use `coffeeview:` embedded engine in [slim](http://slim-lang.com/) 
 
