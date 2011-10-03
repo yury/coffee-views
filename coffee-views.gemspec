@@ -15,9 +15,12 @@ Gem::Specification.new do |s|
   s.files             = `git ls-files`.split("\n")
   s.require_path      = 'lib'
   
-  s.add_runtime_dependency('coffee-script')
-  s.add_runtime_dependency('actionpack')
-  
-  s.add_development_dependency("rspec", ["~> 2.6"])  
+  s.add_dependency "rails", "~> 3.1.0"
+  s.add_dependency "coffee-rails"
+  s.add_development_dependency "sqlite3"
+  s.add_development_dependency "rspec-rails", "~> 2.6"
+  s.add_development_dependency "sass-rails"
+  s.add_development_dependency "coffee-rails"
+  s.add_development_dependency "uglifier"
 
 end
