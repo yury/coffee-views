@@ -1,8 +1,9 @@
+require File.dirname(__FILE__) + '/lib/coffee_views/version'
 require 'date'
 
 Gem::Specification.new do |s|
   s.name              = 'coffee-views'
-  s.version           = '0.1.3'
+  s.version           = CoffeeViews::VERSION
   s.date              = Date.today.to_s
   s.authors           = ['Yury Korolev']
   s.email             = 'yury.korolev@gmail.com'
@@ -22,5 +23,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "sass-rails"
   s.add_development_dependency "coffee-rails"
   s.add_development_dependency "uglifier"
+  s.add_development_dependency "slim"
 
 end

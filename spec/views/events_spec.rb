@@ -15,6 +15,24 @@ JAVASCRIPT
   end
 end
 
+describe "events/index.html.slim" do
+  it "adds embeded engine for slim" do
+    assign :first_name, "Yury"
+    assign :last_name, "'Korolev'"
+
+    render
+
+    expected = <<-JAVASCRIPT
+<script type="text/javascript">(function() {
+  alert("hello, " + "Yury" + " " + 'Korolev');
+}).call(this);
+</script>
+JAVASCRIPT
+
+    rendered.should == expected.strip
+  end
+end
+
 describe "events/show.js.coffee" do
   it "converts to json" do
     assign :event, {name: "Birth day", date: Date.new(1983, 02, 15)}
