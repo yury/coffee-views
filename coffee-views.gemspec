@@ -2,7 +2,7 @@ require 'date'
 
 Gem::Specification.new do |s|
   s.name              = 'coffee-views'
-  s.version           = '0.1.2'
+  s.version           = '0.1.3'
   s.date              = Date.today.to_s
   s.authors           = ['Yury Korolev']
   s.email             = 'yury.korolev@gmail.com'
