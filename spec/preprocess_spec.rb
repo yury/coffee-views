@@ -1,9 +1,11 @@
 require 'spec_helper'
 
-describe CoffeeViews::Handlers::CoffeeScript do
+describe CoffeeViews::Rails::TemplateHandler do
+
+  let(:handler) { subject.class }
   
   def preprocess source
-    subject.preprocess(source)
+    handler.preprocess(source)
   end
   
   describe "Without substitutions" do
