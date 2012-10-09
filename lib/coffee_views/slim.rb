@@ -12,7 +12,7 @@ ActiveSupport.on_load(:action_view) do
         protected
 
         def collect_text(body)
-          ::Slim::CollectText.new.call(body)
+          ::Slim::TextCollector.new.call(body)
         end
       end
       
