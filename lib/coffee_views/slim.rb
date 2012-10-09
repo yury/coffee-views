@@ -5,14 +5,21 @@ ActiveSupport.on_load(:action_view) do
     module CoffeeViews
       class CoffeeViewEngine < Slim::EmbeddedEngine::ERBEngine
         def on_slim_embedded(engine, body)
-         source = CoffeeViews::Rails::TemplateHandler.compile_coffee(collect_text(body))
-         [:multi, [:newline], Temple::ERB::Parser.new.call(source)]
+          erb = collect_text(body)
+          source = CoffeeViews::Rails::TemplateHandler.compile_coffee(erb)
+          [:multi, [:newline], erb_parser.call(source)]
+        end
+
+        def erb_parser
+          @erb_parser ||= Temple::ERB::Parser.new
         end
 
         protected
 
-        def collect_text(body)
-          ::Slim::TextCollector.new.call(body)
+        if !::Slim.const_defined?(:TextCollector)
+          def collect_text(body)
+            ::Slim::CollectText.new.call(body)
+          end
         end
       end
       

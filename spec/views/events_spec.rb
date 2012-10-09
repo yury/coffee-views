@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "events/index.js.coffee" do
+describe "events/index.js" do
   it "interpolates strings" do
     assign :first_name, "Yury"
     assign :last_name, "'Korolev'"
@@ -9,22 +9,26 @@ describe "events/index.js.coffee" do
 
     rendered.should == <<-JAVASCRIPT
 (function() {
+
   alert("hello, " + "Yury" + " " + 'Korolev');
+
 }).call(this);
 JAVASCRIPT
   end
 end
 
-describe "events/index.html.slim" do
+describe "events/index.html" do
   it "adds embeded engine for slim" do
     assign :first_name, "Yury"
     assign :last_name, "'Korolev'"
 
-    render
+    render 
 
     expected = <<-JAVASCRIPT
 <script type="text/javascript">(function() {
+
   alert("hello, " + "Yury" + " " + 'Korolev');
+
 }).call(this);
 </script>
 JAVASCRIPT
@@ -33,7 +37,7 @@ JAVASCRIPT
   end
 end
 
-describe "events/show.js.coffee" do
+describe "events/show.js" do
   it "converts to json" do
     assign :event, {name: "Birth day", date: Date.new(1983, 02, 15)}
 
@@ -42,8 +46,11 @@ describe "events/show.js.coffee" do
     rendered.should == <<-JAVASCRIPT
 (function() {
   var event, owner_id;
+
   event = {"name":"Birth day","date":"1983-02-15"};
+
   owner_id = 100;
+
 }).call(this);
 JAVASCRIPT
   end
