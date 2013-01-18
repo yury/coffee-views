@@ -5,18 +5,19 @@ require 'coffee-script'
 module CoffeeViews
   module Rails
     class TemplateHandler
+
       def self.erb_handler
         @@erb_handler ||= ActionView::Template.registered_template_handler(:erb)
       end
       
       def self.preprocess source
-        return "" unless source
+        return "".html_safe unless source
 
         source.gsub! /<%==(.*?)%>/,     '`<%==\1%>`'
-        source.gsub! /<%=([^=].*?)%>/,  '`<%==(\1).to_json%>`'
+        source.gsub! /<%=([^=].*?)%>/,  '`<%==CoffeeViews.j((\1).to_json.html_safe)%>`'
         source.gsub! /<%([^=].*?)%>/,   '`<%\1%>`'
         source.gsub! /#\{==(.*?)\}/,    '#{`<%==\1%>`}'
-        source.gsub! /#\{=([^=].*?)\}/, '#{`<%==(\1).to_json%>`}'
+        source.gsub! /#\{=([^=].*?)\}/, '#{`<%==CoffeeViews.j((\1).to_json.html_safe)%>`}'
         source
       end
       
@@ -36,6 +37,7 @@ module CoffeeViews
   end
   
   ActiveSupport.on_load(:action_view) do
-    ActionView::Template.register_template_handler :coffee, CoffeeViews::Rails::TemplateHandler
+    ActionView::Template.register_template_handler :coffee, CoffeeViews::Rails::TemplateHandler    
   end
 end
+

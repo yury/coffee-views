@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "events/index.js" do
+describe "events/index.js.coffee" do
   it "interpolates strings" do
     assign :first_name, "Yury"
     assign :last_name, "'Korolev'"
@@ -17,7 +17,7 @@ JAVASCRIPT
   end
 end
 
-describe "events/index.html" do
+describe "events/index.html.slim" do
   it "adds embeded engine for slim" do
     assign :first_name, "Yury"
     assign :last_name, "'Korolev'"
@@ -37,7 +37,7 @@ JAVASCRIPT
   end
 end
 
-describe "events/show.js" do
+describe "events/show.js.coffee" do
   it "converts to json" do
     assign :event, {name: "Birth day", date: Date.new(1983, 02, 15)}
 

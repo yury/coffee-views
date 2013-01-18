@@ -4,6 +4,7 @@ require 'rails/all'
 
 Bundler.require
 require 'slim'
+require 'coffee_views'
 
 module Dummy
   class Application < Rails::Application

@@ -1,7 +1,7 @@
 require 'slim'
 
 class EventsController < ApplicationController
-  def index
-    
+  respond_to :html, :js
+  def index    
   end
 end

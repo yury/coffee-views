@@ -21,7 +21,7 @@ describe CoffeeViews::Rails::TemplateHandler do
     
   describe "<%= code %>" do
     it "should wrap with `` and call #to_json on code" do
-      preprocess("<%=x%>").should == "`<%==(x).to_json%>`"
+      preprocess("<%=x%>").should == "`<%==CoffeeViews.j((x).to_json.html_safe)%>`"
     end
   end
   
@@ -39,7 +39,7 @@ describe CoffeeViews::Rails::TemplateHandler do
   
   describe '#{= code}' do
     it "should wrap with `<%== %>` and call #to_json on code" do
-      preprocess('alert "#{=code}"').should == 'alert "#{`<%==(code).to_json%>`}"'
+      preprocess('alert "#{=code}"').should == 'alert "#{`<%==CoffeeViews.j((code).to_json.html_safe)%>`}"'
     end
   end
 
