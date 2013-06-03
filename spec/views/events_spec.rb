@@ -9,7 +9,6 @@ describe "events/index.js.coffee" do
 
     rendered.should == <<-JAVASCRIPT
 (function() {
-
   alert("hello, " + "Yury" + " " + 'Korolev');
 
 }).call(this);
@@ -22,11 +21,10 @@ describe "events/index.html.slim" do
     assign :first_name, "Yury"
     assign :last_name, "'Korolev'"
 
-    render 
+    render
 
     expected = <<-JAVASCRIPT
 <script type="text/javascript">(function() {
-
   alert("hello, " + "Yury" + " " + 'Korolev');
 
 }).call(this);
